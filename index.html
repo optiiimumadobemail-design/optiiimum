@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Optiiimum — Premium digital growth partner</title>
+<meta name="description" content="Optiiimum builds premium digital growth systems for founders and CEOs — strategy, content, paid ads, and AI production under one roof." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  /* ───────── HOME-SPECIFIC ───────── */
+
+  /* Hero */
+  .hero{
+    position:relative;padding:60px 0 80px;
+  }
+  .hero-meta{
+    display:flex;align-items:center;justify-content:space-between;
+    color:var(--muted);font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+    font-family:"JetBrains Mono",ui-monospace,monospace;
+    margin-bottom:40px;padding:12px 0;border-block:1px solid var(--line);
+  }
+  .hero-meta .live{display:inline-flex;align-items:center;gap:8px}
+  .hero-meta .live::before{
+    content:"";width:7px;height:7px;border-radius:50%;background:var(--accent);
+    box-shadow:0 0 0 4px color-mix(in oklab, var(--accent) 22%, transparent);
+    animation:livePulse 1.6s ease-in-out infinite;
+  }
+  @keyframes livePulse{50%{transform:scale(1.3);opacity:.7}}
+
+  .hero-headline{
+    font-size:clamp(56px,11vw,180px);line-height:.86;letter-spacing:-.06em;
+    font-weight:600;margin-bottom:28px;
+  }
+  .hero-headline .row{display:block}
+  .hero-headline em{
+    font-family:var(--serif);font-style:italic;font-weight:400;
+    background:var(--grad-brand);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    letter-spacing:-.025em;
+  }
+  .hero-headline .swap{
+    display:inline-block;position:relative;
+    font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.025em;
+    min-width:5ch;
+    background:var(--grad-brand);background-size:200% 100%;
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    animation:gradShift 8s ease-in-out infinite;
+  }
+  @keyframes gradShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+  .hero-headline .swap::after{
+    content:"";position:absolute;left:0;right:0;bottom:.04em;height:.08em;
+    background:var(--grad-brand);opacity:.35;
+  }
+
+  .hero-tail{
+    display:grid;grid-template-columns:1fr auto;gap:48px;align-items:end;
+    margin-top:56px;
+  }
+  .hero-lede{
+    font-size:clamp(18px,1.6vw,22px);line-height:1.5;color:var(--muted);
+    max-width:52ch;
+  }
+  .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+
+  /* Hero showreel ribbon */
+  .reel{
+    margin-top:80px;position:relative;
+    border:1px solid var(--line);border-radius:var(--radius-lg);
+    overflow:hidden;background:#0a0a0a;
+    aspect-ratio: 16/7;
+  }
+  .reel-bg{
+    position:absolute;inset:0;
+    background:
+      radial-gradient(ellipse 60% 70% at 12% 28%, var(--g1), transparent 60%),
+      radial-gradient(ellipse 55% 65% at 30% 75%, var(--g2), transparent 60%),
+      radial-gradient(ellipse 50% 60% at 55% 50%, var(--g3), transparent 60%),
+      radial-gradient(ellipse 55% 65% at 78% 78%, var(--g4), transparent 60%),
+      radial-gradient(ellipse 60% 70% at 92% 25%, var(--g5), transparent 60%),
+      #1a1a22;
+    filter:saturate(1.05);
+  }
+  .reel-bg::after{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,.45) 100%);
+  }
+  .reel-grid{
+    position:absolute;inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  }
+  .reel-content{
+    position:relative;height:100%;display:grid;
+    grid-template-columns: 1fr auto 1fr;align-items:center;gap:24px;
+    padding:34px;
+  }
+  .reel-side{display:flex;flex-direction:column;gap:14px}
+  .reel-side.right{align-items:flex-end;text-align:right}
+  .reel-tile{
+    background:rgba(0,0,0,.35);border:1px solid var(--line-2);
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    border-radius:18px;padding:14px 18px;min-width:200px;
+    display:flex;align-items:center;gap:14px;
+  }
+  .reel-tile .pic{
+    width:36px;height:36px;border-radius:10px;
+    background:linear-gradient(135deg, color-mix(in oklab, var(--accent) 70%, white), var(--accent-2));
+  }
+  .reel-tile .meta{font-size:12px;line-height:1.3}
+  .reel-tile .meta b{display:block;font-weight:600}
+  .reel-tile .meta span{color:var(--muted)}
+
+  .reel-center{
+    width:min(360px,30vw);aspect-ratio:1;border-radius:50%;
+    background:
+      radial-gradient(circle at 35% 30%, var(--g1), transparent 50%),
+      radial-gradient(circle at 75% 70%, var(--g3), transparent 55%),
+      radial-gradient(circle at 30% 80%, var(--g4), transparent 55%),
+      radial-gradient(circle at 70% 25%, var(--g5), transparent 55%),
+      var(--g3);
+    box-shadow:
+      0 0 0 1px rgba(255,255,255,.12),
+      0 30px 100px color-mix(in oklab, var(--g3) 45%, transparent);
+    display:grid;place-items:center;color:#0a0a0c;text-align:center;
+    position:relative;
+    animation:floatY 6s ease-in-out infinite, hueSpin 18s linear infinite;
+  }
+  @keyframes hueSpin{to{filter:hue-rotate(360deg)}}
+  @keyframes floatY{50%{transform:translateY(-12px)}}
+  .reel-center::after{
+    content:"";position:absolute;inset:-30px;border-radius:50%;
+    border:1px dashed rgba(255,255,255,.08);
+    animation:spin 60s linear infinite;
+  }
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .reel-center .num{
+    font-family:var(--serif);font-style:italic;font-size:88px;line-height:.8;font-weight:400;
+    letter-spacing:-.04em;
+  }
+  .reel-center .lbl{
+    font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;margin-top:6px;
+  }
+
+  .reel-cap{
+    position:absolute;left:34px;bottom:34px;color:var(--muted);
+    font-family:"JetBrains Mono",ui-monospace,monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  }
+  .reel-play{
+    position:absolute;right:34px;bottom:34px;
+    display:inline-flex;align-items:center;gap:10px;
+    padding:10px 16px;border-radius:999px;background:rgba(0,0,0,.5);
+    border:1px solid var(--line-2);backdrop-filter:blur(10px);
+    color:var(--text);font-size:13px;
+  }
+  .reel-play .tri{
+    width:0;height:0;border-left:8px solid var(--g3);
+    border-top:5px solid transparent;border-bottom:5px solid transparent;
+  }
+
+  /* Trust strip */
+  .trust{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+    border-block:1px solid var(--line);margin-top:60px;
+  }
+  .trust-cell{
+    padding:24px;border-left:1px solid var(--line);
+    display:flex;flex-direction:column;gap:6px;
+  }
+  .trust-cell:first-child{border-left:0}
+  .trust-cell strong{
+    font-size:36px;letter-spacing:-.04em;font-weight:500;
+  }
+  .trust-cell strong em{font-family:var(--serif);font-style:italic;font-weight:400;background:var(--grad-brand);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+  .trust-cell span{color:var(--muted);font-size:13px}
+
+  /* ───────── Pillars (4-col vertical service hover cards) ───────── */
+  .pillars{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;
+    background:var(--bg-soft);
+  }
+  .pillar{
+    padding:32px 28px 28px;border-left:1px solid var(--line);
+    min-height:340px;display:flex;flex-direction:column;justify-content:space-between;
+    cursor:pointer;transition:background .25s ease;position:relative;
+  }
+  .pillar:first-child{border-left:0}
+  .pillar:hover{background:#141414}
+  .pillar .num{
+    font-family:"JetBrains Mono",ui-monospace,monospace;font-size:11px;
+    letter-spacing:.2em;color:var(--muted);margin-bottom:auto;
+  }
+  .pillar h3{
+    font-size:28px;letter-spacing:-.035em;font-weight:500;margin:80px 0 14px;
+    line-height:1;
+  }
+  .pillar h3 em{font-family:var(--serif);font-style:italic;font-weight:400;background:var(--grad-brand);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+  .pillar p{color:var(--muted);font-size:14px;line-height:1.55}
+  .pillar .arr{
+    margin-top:18px;width:34px;height:34px;border-radius:50%;
+    border:1px solid var(--line-2);display:grid;place-items:center;
+    transition:.2s ease;
+  }
+  .pillar:hover .arr{background:var(--grad-brand);border-color:transparent;color:#0a0a0c;transform:translate(2px,-2px)}
+
+  /* ───────── Process (interactive vertical stepper) ───────── */
+  .process{
+    display:grid;grid-template-columns:1fr 1.4fr;gap:28px;
+  }
+  .process-tabs{display:flex;flex-direction:column;gap:8px}
+  .process-tab{
+    text-align:left;padding:24px 24px;border:1px solid var(--line);
+    border-radius:18px;background:var(--card);
+    display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;
+    transition:.22s ease;
+  }
+  .process-tab:hover{border-color:var(--line-2)}
+  .process-tab[aria-selected="true"]{
+    background:
+      linear-gradient(var(--card),var(--card)) padding-box,
+      var(--grad-brand) border-box;
+    border:1px solid transparent;
+  }
+  .process-tab .num{
+    font-family:var(--serif);font-style:italic;font-size:36px;font-weight:400;
+    background:var(--grad-brand);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    line-height:1;letter-spacing:-.03em;width:48px;
+  }
+  .process-tab .ttl{
+    font-size:20px;letter-spacing:-.03em;font-weight:500;
+  }
+  .process-tab .ttl span{display:block;font-size:12px;color:var(--muted);font-weight:400;margin-top:4px}
+  .process-tab .chev{
+    width:28px;height:28px;border-radius:50%;border:1px solid var(--line-2);
+    display:grid;place-items:center;color:var(--muted);
+  }
+  .process-tab[aria-selected="true"] .chev{background:var(--grad-brand);color:#0a0a0c;border-color:transparent}
+
+  .process-panel{
+    border:1px solid var(--line);border-radius:var(--radius-lg);
+    background:linear-gradient(180deg,#111,#0a0a0a);
+    padding:36px;min-height:460px;position:relative;overflow:hidden;
+  }
+  .process-stage{
+    position:absolute;inset:0;padding:36px;
+    display:flex;flex-direction:column;justify-content:space-between;
+    opacity:0;transform:translateY(8px);transition:.35s ease;pointer-events:none;
+  }
+  .process-stage.active{opacity:1;transform:none;pointer-events:auto}
+  .process-stage .label{
+    font-family:"JetBrains Mono",ui-monospace,monospace;font-size:11px;
+    letter-spacing:.2em;text-transform:uppercase;margin-bottom:16px;
+    background:var(--grad-brand);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    display:inline-block;
+  }
+  .process-stage h3{
+    font-size:clamp(36px,4.5vw,56px);line-height:.95;letter-spacing:-.045em;font-weight:500;
+    margin-bottom:18px;max-width:18ch;
+  }
+  .process-stage h3 em{font-family:var(--serif);font-style:italic;font-weight:400;background:var(--grad-brand);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+  .process-stage p{color:var(--muted);max-width:48ch;line-height:1.55;font-size:15px}
+  .process-stage .deliverables{
+    display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;
+  }
+  .process-stage .deliverables span{
+    font-size:12px;padding:7px 12px;border-radius:999px;
+    border:1px solid var(--line-2);color:var(--muted);background:rgba(255,255,255,.03);
+  }
+
+  /* Stage visuals */
+  .stage-visual{
+    position:absolute;right:36px;top:36px;width:42%;height:280px;
+    border-radius:22px;overflow:hidden;border:1px solid var(--line-2);
+    background:#0a0a0a;
+  }
+  .stage-visual.map{
+    background:
+      radial-gradient(circle at 25% 35%, var(--g1), transparent 35%),
+      radial-gradient(circle at 60% 60%, var(--g3), transparent 35%),
+      radial-gradient(circle at 85% 30%, var(--g5), transparent 35%),
+      #0a0a0a;
+  }
+  .stage-visual.map::before{
+    content:"";position:absolute;inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.06) 1px,transparent 1px);
+    background-size:32px 32px;
+  }
+  .stage-visual.make{
+    background:linear-gradient(135deg,#181818,#0a0a0a);
+    display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:6px;
+  }
+  .stage-visual.make .tile{
+    border-radius:10px;background:linear-gradient(135deg, var(--g1), #1a1a1a);
+    border:1px solid var(--line);
+  }
+  .stage-visual.make .tile:nth-child(2){background:linear-gradient(135deg, var(--g2), #2a1a0f)}
+  .stage-visual.make .tile:nth-child(3){background:linear-gradient(135deg, var(--g3), #2a0e1f)}
+  .stage-visual.make .tile:nth-child(4){background:linear-gradient(135deg, var(--g4), #1a0e2a)}
+  .stage-visual.make .tile:nth-child(5){background:linear-gradient(135deg, var(--g5), #0e1f2a)}
+  .stage-visual.make .tile:nth-child(6){background:linear-gradient(135deg, var(--g6), #1f1a2a)}
+  .stage-visual.scale{
+    background:linear-gradient(135deg,#0a0a0a,#181818);
+    padding:18px;display:flex;flex-direction:column;gap:8px;justify-content:flex-end;
+  }
+  .stage-visual.scale .bar{
+    height:14px;border-radius:4px;background:rgba(255,255,255,.08);position:relative;overflow:hidden;
+  }
+  .stage-visual.scale .bar::after{
+    content:"";position:absolute;inset:0;background:var(--g1);
+    transform-origin:left;animation:grow 2.4s ease-out infinite;
+  }
+  .stage-visual.scale .bar:nth-child(2)::after{animation-delay:.2s;background:var(--g3)}
+  .stage-visual.scale .bar:nth-child(3)::after{animation-delay:.4s;background:var(--g5)}
+  .stage-visual.scale .bar:nth-child(4)::after{animation-delay:.6s;background:var(--g4)}
+  @keyframes grow{0%{transform:scaleX(0)}60%{transform:scaleX(.85)}100%{transform:scaleX(.85)}}
+
+  /* ───────── Work grid ───────── */
+  .work-grid{
+    display:grid;grid-template-columns:repeat(6,1fr);gap:14px;
+  }
+  .work{
+    border:1px solid var(--line);border-radius:24px;overflow:hidden;
+    position:relative;background:#101010;display:flex;flex-direction:column;
+    transition:.25s ease;cursor:pointer;
+  }
+  .work:hover{transform:translateY(-3px);border-color:var(--line-2)}
+  .work .visual{height:300px;position:relative;overflow:hidden}
+  .work .body{padding:22px}
+  .work .tag{
+    display:inline-block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+    font-family:"JetBrains Mono",monospace;margin-bottom:10px;
+    background:var(--grad-brand);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+  }
+  .work h3{
+    font-size:22px;letter-spacing:-.03em;font-weight:500;line-height:1.15;
+  }
+  .work .meta{
+    display:flex;justify-content:space-between;color:var(--muted);font-size:12px;
+    margin-top:14px;padding-top:14px;border-top:1px solid var(--line);
+  }
+  .work.w-3{grid-column:span 3}
+  .work.w-2{grid-column:span 2}
+  .work.w-4{grid-column:span 4}
+
+  .visual-1{
+    background:
+      linear-gradient(180deg, transparent 0%, transparent 38%, rgba(0,0,0,.85) 100%),
+      url("assets/jozeph.jpg") center 18% / cover no-repeat,
+      var(--g3);
+  }
+  .visual-1::after{
+    content:"Jozeph Ezzat";position:absolute;left:24px;bottom:22px;
+    font-family:var(--serif);font-style:italic;font-size:42px;color:#fff;
+    letter-spacing:-.025em;text-shadow:0 6px 30px rgba(0,0,0,.55);
+  }
+  .visual-2{
+    background:linear-gradient(135deg,#1c1c1c,#0a0a0a);
+    display:grid;place-items:center;
+  }
+  .visual-2::after{
+    content:"";width:140px;height:140px;border-radius:50%;
+    background:var(--grad-brand);
+    box-shadow:0 0 0 8px rgba(255,255,255,.04), 0 0 0 16px rgba(255,255,255,.02), 0 30px 80px color-mix(in oklab, var(--g3) 35%, transparent);
+    animation:floatY 5s ease-in-out infinite;
+  }
+  .visual-3{
+    background:
+      repeating-linear-gradient(45deg, rgba(255,255,255,.06) 0 2px, transparent 2px 14px),
+      linear-gradient(135deg, var(--g4), var(--g3) 50%, var(--g5));
+  }
+  .visual-3::after{
+    content:"REELS · UGC · YT";position:absolute;left:50%;top:50%;
+    transform:translate(-50%,-50%);
+    font-family:"JetBrains Mono",monospace;font-size:13px;letter-spacing:.3em;
+    color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.4);
+  }
+  .visual-4{
+    background:linear-gradient(135deg,#0c0a1a,#040404);position:relative;
+  }
+  .visual-4::before{
+    content:"";position:absolute;inset:24px;
+    border-radius:8px;border:1px solid var(--line-2);
+    background:
+      linear-gradient(0deg, var(--g3) 1px, transparent 1px) 0 100%/100% 30%,
+      linear-gradient(0deg, var(--g4) 1px, transparent 1px) 0 100%/100% 60%,
+      linear-gradient(0deg, var(--g5) 1px, transparent 1px) 0 100%/100% 90%,
+      #060606;
+  }
+  .visual-4::after{
+    content:"+412% ROAS";position:absolute;left:24px;top:24px;
+    font-family:var(--serif);font-style:italic;font-size:38px;
+    background:var(--grad-brand);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    letter-spacing:-.03em;
+  }
+
+  .visual-5{
+    background:
+      radial-gradient(circle at 20% 25%, var(--g1), transparent 50%),
+      radial-gradient(circle at 55% 50%, var(--g3), transparent 55%),
+      radial-gradient(circle at 80% 75%, var(--g5), transparent 55%),
+      radial-gradient(circle at 90% 20%, var(--g6), transparent 50%),
+      var(--g3);
+    position:relative;
+  }
+  .visual-5::after{
+    content:"AI / CGI";position:absolute;left:24px;bottom:24px;
+    font-family:var(--serif);font-style:italic;font-size:48px;color:rgba(0,0,0,.65);
+    letter-spacing:-.02em;
+  }
+
+  /* ───────── Pricing toggle ───────── */
+  .pricing-toggle{
+    display:inline-flex;padding:4px;border-radius:999px;border:1px solid var(--line-2);
+    background:#0a0a0a;gap:0;margin-bottom:36px;
+  }
+  .pricing-toggle button{
+    padding:9px 18px;border-radius:999px;font-size:13px;color:var(--muted);
+    transition:.18s ease;font-weight:500;letter-spacing:-.005em;
+  }
+  .pricing-toggle button[aria-pressed="true"]{
+    background:var(--grad-brand);color:#0a0a0c;font-weight:600;
+  }
+  .pricing-toggle button .save{
+    font-size:10px;margin-left:6px;padding:2px 6px;border-radius:999px;
+    background:rgba(0,0,0,.18);
+  }
+
+  .pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .price{
+    border:1px solid var(--line);border-radius:var(--radius-lg);background:var(--card);
+    padding:32px;display:flex;flex-direction:column;gap:18px;position:relative;
+  }
+  .price.featured{
+    background:
+      linear-gradient(180deg, #15151a, #0d0d12) padding-box,
+      var(--grad-brand) border-box;
+    border:1px solid transparent;
+    box-shadow:0 30px 80px color-mix(in oklab, var(--g3) 18%, transparent);
+  }
+  .price.featured::before{
+    content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+    background:radial-gradient(ellipse 80% 60% at 50% 0%, color-mix(in oklab, var(--g3) 18%, transparent), transparent 60%);
+  }
+  .price .ribbon{
+    position:absolute;right:24px;top:-10px;font-size:10px;letter-spacing:.18em;
+    text-transform:uppercase;background:var(--grad-brand);color:#0a0a0c;
+    padding:5px 12px;border-radius:999px;font-weight:700;
+  }
+  .price h3{font-size:22px;font-weight:500;letter-spacing:-.03em}
+  .price h3 em{font-family:var(--serif);font-style:italic;font-weight:400;background:var(--grad-brand);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+  .price .desc{color:var(--muted);font-size:14px;line-height:1.5;min-height:42px}
+  .price .amt{
+    font-size:54px;letter-spacing:-.05em;font-weight:500;line-height:1;
+    display:flex;align-items:baseline;gap:8px;
+  }
+  .price .amt em{font-family:var(--serif);font-style:italic;font-weight:400;background:var(--grad-brand);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+  .price .amt small{font-size:14px;color:var(--muted);font-weight:400;letter-spacing:0}
+  .price ul{
+    list-style:none;display:grid;gap:12px;font-size:14px;color:var(--muted);
+    padding-top:18px;border-top:1px solid var(--line);
+  }
+  .price li{display:flex;align-items:flex-start;gap:10px}
+  .price li::before{
+    content:"";flex-shrink:0;width:14px;height:14px;border-radius:50%;
+    background:var(--grad-brand);
+    margin-top:3px;position:relative;
+  }
+  .price li::after{
+    content:"";width:5px;height:8px;border-right:1.5px solid #0a0a0c;
+    border-bottom:1.5px solid #0a0a0c;transform:rotate(45deg);
+    position:absolute;margin-left:5px;margin-top:5px;
+  }
+  .price li{position:relative}
+
+  /* ───────── FAQ ───────── */
+  .faq{display:grid;gap:0;border-block:1px solid var(--line)}
+  .faq details{
+    border-bottom:1px solid var(--line);padding:24px 0;
+  }
+  .faq details:last-child{border-bottom:0}
+  .faq summary{
+    cursor:pointer;display:flex;align-items:center;justify-content:space-between;
+    gap:20px;font-size:20px;letter-spacing:-.025em;font-weight:500;
+    list-style:none;
+  }
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary .ico{
+    width:34px;height:34px;border-radius:50%;border:1px solid var(--line-2);
+    display:grid;place-items:center;color:var(--muted);transition:.2s ease;
+    flex-shrink:0;font-size:18px;
+  }
+  .faq details[open] summary .ico{
+    background:var(--grad-brand);color:#0a0a0c;border-color:transparent;transform:rotate(45deg);
+  }
+  .faq details p{
+    color:var(--muted);line-height:1.6;font-size:15px;
+    margin-top:14px;max-width:70ch;
+  }
+
+  /* ───────── CTA ───────── */
+  .cta-box{
+    text-align:center;border-radius:44px;
+    padding:80px 24px;position:relative;overflow:hidden;
+    background:
+      radial-gradient(ellipse 60% 80% at 20% 30%, color-mix(in oklab, var(--g1) 30%, transparent), transparent 60%),
+      radial-gradient(ellipse 60% 80% at 80% 70%, color-mix(in oklab, var(--g5) 30%, transparent), transparent 60%),
+      radial-gradient(ellipse 50% 60% at 50% 50%, color-mix(in oklab, var(--g3) 25%, transparent), transparent 60%),
+      linear-gradient(180deg, var(--card), var(--bg-soft)) padding-box,
+      var(--grad-brand) border-box;
+    border:1px solid transparent;
+  }
+  .cta-box::before{
+    content:"";position:absolute;left:50%;top:-50%;width:600px;height:600px;
+    transform:translateX(-50%);border-radius:50%;
+    border:1px dashed rgba(255,255,255,.05);
+  }
+  .cta-box h2{
+    font-size:clamp(46px,7vw,96px);letter-spacing:-.05em;line-height:.92;
+    font-weight:500;margin-bottom:24px;
+  }
+  .cta-box h2 em{font-family:var(--serif);font-style:italic;font-weight:400;background:var(--grad-brand);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+  .cta-box p{color:var(--muted);font-size:18px;margin-bottom:32px;max-width:50ch;margin-inline:auto}
+  .cta-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+  /* responsive */
+  @media(max-width:980px){
+    .hero-tail{grid-template-columns:1fr;gap:24px}
+    .pillars{grid-template-columns:1fr 1fr}
+    .pillar{border-left:1px solid var(--line);border-top:1px solid var(--line)}
+    .pillar:nth-child(2n+1){border-left:0}
+    .pillar:nth-child(-n+2){border-top:0}
+    .work-grid{grid-template-columns:1fr 1fr}
+    .work.w-3,.work.w-2,.work.w-4{grid-column:span 1}
+    .pricing{grid-template-columns:1fr}
+    .process{grid-template-columns:1fr}
+    .stage-visual{display:none}
+    .trust{grid-template-columns:1fr 1fr}
+    .trust-cell:nth-child(3){border-left:0}
+  }
+  @media(max-width:640px){
+    .reel-content{grid-template-columns:1fr;text-align:center}
+    .reel-side{align-items:center !important;text-align:center !important}
+    .reel-cap,.reel-play{position:static;display:none}
+    .work-grid{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+  <div class="noise"></div>
+
+  <div data-slot="nav"></div>
+
+  <main>
+    <!-- ───────── HERO ───────── -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-meta">
+          <span class="live">Booking Q3/Q4 2026</span>
+          <span class="hide-mobile">Dubai · Alexandria · Cairo</span>
+          <span>Founded by Jozeph Ezzat — Managing Director</span>
+        </div>
+
+        <h1 class="hero-headline">
+          <span class="row">We turn personal</span>
+          <span class="row"><em>brands</em> into</span>
+          <span class="row">powerful <span id="swap" class="swap">identities</span></span>
+        </h1>
+
+        <div class="hero-tail">
+          <p class="hero-lede">
+            Optiiimum helps founders, professionals, and creators build standout brands through strategy, content, paid ads, AI production, and smart digital execution — from Egypt and Dubai to the GCC, Europe, and North America.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary btn-lg" href="contact.html">
+              Book a free consultation
+              <span class="arr"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </a>
+            <a class="btn btn-ghost btn-lg" href="#work">Explore our work</a>
+          </div>
+        </div>
+
+        <!-- Showreel -->
+        <div class="reel" aria-label="Showreel">
+          <div class="reel-bg"></div>
+          <div class="reel-grid"></div>
+          <div class="reel-content">
+            <div class="reel-side">
+              <div class="reel-tile">
+                <div class="pic" style="background:linear-gradient(135deg, var(--g1), var(--g2))"></div>
+                <div class="meta"><b>+412% ROAS</b><span>DTC skincare · Q1 26</span></div>
+              </div>
+              <div class="reel-tile" style="margin-left:40px">
+                <div class="pic" style="background:linear-gradient(135deg, var(--g3), var(--g4))"></div>
+                <div class="meta"><b>1.2M views</b><span>Founder personal brand</span></div>
+              </div>
+            </div>
+            <div class="reel-center">
+              <div>
+                <div class="num">360°</div>
+                <div class="lbl">Growth System</div>
+              </div>
+            </div>
+            <div class="reel-side right">
+              <div class="reel-tile" style="margin-right:40px">
+                <div class="pic" style="background:linear-gradient(135deg, var(--g5), var(--g6))"></div>
+                <div class="meta" style="text-align:left"><b>27 launches</b><span>Course & cohort programs</span></div>
+              </div>
+              <div class="reel-tile">
+                <div class="pic" style="background:var(--grad-brand)"></div>
+                <div class="meta" style="text-align:left"><b>AI production</b><span>Live event visuals</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="reel-cap">2026 Showreel · 02:14</div>
+          <button class="reel-play" type="button" aria-label="Play showreel">
+            <span class="tri"></span> Watch reel
+          </button>
+        </div>
+
+        <!-- Trust strip -->
+        <div class="trust">
+          <div class="trust-cell"><strong><em>125</em>+</strong><span>Successful campaigns</span></div>
+          <div class="trust-cell"><strong>375+</strong><span>Brands elevated</span></div>
+          <div class="trust-cell"><strong>5,000<em>+</em></strong><span>Students trained</span></div>
+          <div class="trust-cell"><strong>15+ <small style="font-size:.4em;color:var(--muted);font-weight:400">courses</small></strong><span>OptiiimumSkools</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Marquee — trusted-by names -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Jozeph Ezzat</span> <span class="marquee-dot"></span>
+        <em>Diana Clinics</em> <span class="marquee-dot"></span>
+        <span>Dr. Peter Moris</span> <span class="marquee-dot"></span>
+        <em>Dr. Bassant Habash</em> <span class="marquee-dot"></span>
+        <span>Dr. Dina Asaad</span> <span class="marquee-dot"></span>
+        <em>DSE Ausbildung</em> <span class="marquee-dot"></span>
+        <span>OptiiimumSkools</span> <span class="marquee-dot"></span>
+        <em>Optiiimum AI</em> <span class="marquee-dot"></span>
+        <span>Jozeph Ezzat</span> <span class="marquee-dot"></span>
+        <em>Diana Clinics</em> <span class="marquee-dot"></span>
+        <span>Dr. Peter Moris</span> <span class="marquee-dot"></span>
+        <em>Dr. Bassant Habash</em> <span class="marquee-dot"></span>
+        <span>Dr. Dina Asaad</span> <span class="marquee-dot"></span>
+        <em>DSE Ausbildung</em> <span class="marquee-dot"></span>
+      </div>
+    </div>
+
+    <!-- ───────── PILLARS ───────── -->
+    <section class="sec" id="services">
+      <div class="container">
+        <div class="sec-head">
+          <div>
+            <div class="sec-eyebrow">What we do</div>
+            <h2 class="sec-title">Four pillars,<br/>one <em>operating system</em>.</h2>
+          </div>
+          <p class="sec-sub">A senior team handling the unsexy plumbing — research, calendars, briefs, edits, media buying, dashboards — so the brand looks effortless.</p>
+        </div>
+
+        <div class="pillars">
+          <a class="pillar" href="services.html#marketing">
+            <div class="num">01 / Strategy</div>
+            <div>
+              <h3>Plan the <em>growth</em>.</h3>
+              <p>Positioning, audience, offers, content pillars, and the conversion path before a single asset is made.</p>
+              <div class="arr"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M3 11L11 3M5 3h6v6" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg></div>
+            </div>
+          </a>
+          <a class="pillar" href="services.html#content">
+            <div class="num">02 / Content</div>
+            <div>
+              <h3>Make the <em>asset</em>.</h3>
+              <p>Reels, UGC, AI video, founder content, and design produced on a calendar — not in panic.</p>
+              <div class="arr"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M3 11L11 3M5 3h6v6" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg></div>
+            </div>
+          </a>
+          <a class="pillar" href="services.html#performance">
+            <div class="num">03 / Paid</div>
+            <div>
+              <h3>Buy the <em>attention</em>.</h3>
+              <p>Meta, TikTok, Google, and YouTube media buying with creative testing built into the plan.</p>
+              <div class="arr"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M3 11L11 3M5 3h6v6" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg></div>
+            </div>
+          </a>
+          <a class="pillar" href="services.html#systems">
+            <div class="num">04 / Systems</div>
+            <div>
+              <h3>Close the <em>loop</em>.</h3>
+              <p>Landing pages, funnels, ManyChat, CRM workflows — the boring layer that makes growth compound.</p>
+              <div class="arr"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M3 11L11 3M5 3h6v6" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg></div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────── PROCESS ───────── -->
+    <section class="sec" id="process">
+      <div class="container">
+        <div class="sec-head">
+          <div>
+            <div class="sec-eyebrow">How we work</div>
+            <h2 class="sec-title">Three phases,<br/><em>compounding</em> output.</h2>
+          </div>
+          <p class="sec-sub">No 90-day audit dressed up as a deliverable. We start producing in week two and refine on real performance data.</p>
+        </div>
+
+        <div class="process">
+          <div class="process-tabs" role="tablist">
+            <button class="process-tab" role="tab" aria-selected="true" data-target="map">
+              <span class="num">01</span>
+              <span class="ttl">Strategy Sprint<span>2 weeks · positioning, offers, plan</span></span>
+              <span class="chev">→</span>
+            </button>
+            <button class="process-tab" role="tab" aria-selected="false" data-target="make">
+              <span class="num">02</span>
+              <span class="ttl">Content Engine<span>Ongoing · scripts, assets, calendar</span></span>
+              <span class="chev">→</span>
+            </button>
+            <button class="process-tab" role="tab" aria-selected="false" data-target="scale">
+              <span class="num">03</span>
+              <span class="ttl">Ads & Optimization<span>Ongoing · launch, test, scale</span></span>
+              <span class="chev">→</span>
+            </button>
+          </div>
+
+          <div class="process-panel">
+            <div class="process-stage active" data-id="map">
+              <div class="stage-visual map"></div>
+              <div>
+                <div class="label">Phase 01 / Strategy</div>
+                <h3>Define the <em>shape</em> of growth before producing one asset.</h3>
+                <p>Two weeks of positioning, audience research, offer architecture, content pillars, and a measurement plan. You get a working playbook, not a 200-slide deck nobody reads.</p>
+              </div>
+              <div class="deliverables">
+                <span>Positioning brief</span><span>ICP &amp; messaging</span><span>Content pillars</span><span>Offer ladder</span><span>KPI dashboard</span>
+              </div>
+            </div>
+            <div class="process-stage" data-id="make">
+              <div class="stage-visual make">
+                <div class="tile"></div><div class="tile"></div><div class="tile"></div>
+                <div class="tile"></div><div class="tile"></div><div class="tile"></div>
+              </div>
+              <div>
+                <div class="label">Phase 02 / Content</div>
+                <h3>A <em>calendar</em>, not a panic. Production runs on rails.</h3>
+                <p>Scripts, shoots, designs, edits, captions, and AI-assisted variants — all moving through a single weekly rhythm with brand guardrails baked in.</p>
+              </div>
+              <div class="deliverables">
+                <span>Reels &amp; UGC</span><span>Founder content</span><span>AI video</span><span>Design system</span><span>Publishing flow</span>
+              </div>
+            </div>
+            <div class="process-stage" data-id="scale">
+              <div class="stage-visual scale">
+                <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+              </div>
+              <div>
+                <div class="label">Phase 03 / Paid</div>
+                <h3>Compound the winners. Kill the rest <em>fast</em>.</h3>
+                <p>Meta, TikTok, and Google running with weekly creative testing and a reporting view that doesn't lie. Decisions are made on data, not vibes.</p>
+              </div>
+              <div class="deliverables">
+                <span>Media buying</span><span>Creative testing</span><span>Landing pages</span><span>Attribution</span><span>Weekly reviews</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────── WORK ───────── -->
+    <section class="sec" id="work">
+      <div class="container">
+        <div class="sec-head">
+          <div>
+            <div class="sec-eyebrow">Featured case studies</div>
+            <h2 class="sec-title">Real strategies.<br/>Real <em>execution</em>. Real growth.</h2>
+          </div>
+          <p class="sec-sub">Selected from 375+ brands we've built. Every number below is verifiable — ask for the dashboard during your discovery call.</p>
+        </div>
+
+        <div class="work-grid">
+          <article class="work w-4">
+            <div class="visual visual-1"></div>
+            <div class="body">
+              <span class="tag">Personal brand · Education</span>
+              <h3>Jozeph Ezzat × Optiiimum: 678,000 followers, 25,000 students, 10,000 lives changed — built from zero.</h3>
+              <div class="meta"><span>50 months</span><span>960 videos · 90K avg views</span></div>
+            </div>
+          </article>
+          <article class="work w-2">
+            <div class="visual visual-2"></div>
+            <div class="body">
+              <span class="tag">Medical · Aesthetics</span>
+              <h3>Diana Clinics: from hollow numbers to 250,000+ engaged believers.</h3>
+              <div class="meta"><span>Full rebuild</span><span>Patient-generating brand</span></div>
+            </div>
+          </article>
+          <article class="work w-3">
+            <div class="visual visual-3"></div>
+            <div class="body">
+              <span class="tag">Plastic Surgery · GCC</span>
+              <h3>Dr. Peter Moris: the surgeon nobody knew. The brand everyone books.</h3>
+              <div class="meta"><span>9 months</span><span>+19K followers · 50%+ international</span></div>
+            </div>
+          </article>
+          <article class="work w-3">
+            <div class="visual visual-4"></div>
+            <div class="body">
+              <span class="tag">Nutrition · Media</span>
+              <h3>Dr. Bassant Habash: from Mansoura nutritionist to national icon.</h3>
+              <div class="meta"><span>13 months</span><span>96.8K followers · booked 2 weeks ahead</span></div>
+            </div>
+          </article>
+          <article class="work w-3">
+            <div class="visual visual-5"></div>
+            <div class="body">
+              <span class="tag">Therapy · NLP</span>
+              <h3>Dr. Dina Asaad: camera fear to ~100K authority &amp; fully booked.</h3>
+              <div class="meta"><span>6 months</span><span>From zero</span></div>
+            </div>
+          </article>
+          <article class="work w-3">
+            <div class="visual visual-3"></div>
+            <div class="body">
+              <span class="tag">Education · Migration</span>
+              <h3>DSE: 2K → 51K real, qualified followers chasing Ausbildung in Germany.</h3>
+              <div class="meta"><span>13 months</span><span>+2,450% precision growth</span></div>
+            </div>
+          </article>
+        </div>
+
+        <div style="text-align:center;margin-top:48px">
+          <a class="btn btn-ghost btn-lg" href="contact.html">Request the full case-study deck →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────── PRICING ───────── -->
+    <section class="sec" id="plans">
+      <div class="container">
+        <div class="sec-head">
+          <div>
+            <div class="sec-eyebrow">Engagement</div>
+            <h2 class="sec-title">Plans that scale<br/>with the <em>ambition</em>.</h2>
+          </div>
+          <p class="sec-sub">Retainers, one-off projects, or sprints — pick the cadence and we'll scope the rest with you on the call.</p>
+        </div>
+
+        <div class="pricing-toggle" role="tablist" aria-label="Billing cadence">
+          <button type="button" aria-pressed="true" data-bill="monthly">Monthly</button>
+          <button type="button" aria-pressed="false" data-bill="quarterly">Quarterly <span class="save">−10%</span></button>
+          <button type="button" aria-pressed="false" data-bill="annual">Annual <span class="save">−18%</span></button>
+        </div>
+
+        <div class="pricing">
+          <div class="price">
+            <h3>Standard <em>Plan</em></h3>
+            <p class="desc">Ideal for new or growing brands building presence and credibility.</p>
+            <div class="amt"><span data-base="1500">$1,500</span><small>/mo · USD</small></div>
+            <ul>
+              <li>Personalised branding strategy</li>
+              <li>Strategic content creation</li>
+              <li>Social media management (3–5 posts/week)</li>
+              <li>Monthly analytics reports</li>
+            </ul>
+            <a class="btn btn-ghost" href="contact.html">Let's start now</a>
+          </div>
+
+          <div class="price featured">
+            <span class="ribbon">Most Picked</span>
+            <h3>Premium <em>Package</em></h3>
+            <p class="desc">Designed for established brands ready to scale digital growth.</p>
+            <div class="amt"><span data-base="2500">$2,500</span><small>/mo · USD</small></div>
+            <ul>
+              <li>Everything in Standard, plus</li>
+              <li>Comprehensive content production</li>
+              <li>Advanced social media management</li>
+              <li>Digital marketing campaigns</li>
+              <li>Ongoing strategic support</li>
+            </ul>
+            <a class="btn btn-primary" href="contact.html">Let's start now →</a>
+          </div>
+
+          <div class="price">
+            <h3>Enterprise <em>Growth</em></h3>
+            <p class="desc">Multi-platform execution, paid ads, AI production, and strategic scaling.</p>
+            <div class="amt"><span data-base="0">Custom</span><small>scoped to ambition</small></div>
+            <ul>
+              <li>Full growth strategy</li>
+              <li>Multi-platform content system</li>
+              <li>Advanced paid campaigns</li>
+              <li>AI creative production</li>
+              <li>Dedicated team coordination</li>
+              <li>Monthly strategy calls + advanced reporting</li>
+            </ul>
+            <a class="btn btn-ghost" href="contact.html">Request a custom scope</a>
+          </div>
+
+        </div>
+
+        <p style="text-align:center;margin-top:24px;color:var(--muted);font-size:14px">
+          All plans are bespoke. Final scope &amp; pricing are tailored on the discovery call.
+        </p>
+      </div>
+    </section>
+
+    <!-- ───────── FAQ ───────── -->
+    <section class="sec" id="faq">
+      <div class="container">
+        <div class="sec-head">
+          <div>
+            <div class="sec-eyebrow">Questions</div>
+            <h2 class="sec-title">Before you<br/><em>book the call</em>.</h2>
+          </div>
+          <p class="sec-sub">If your question isn't here, just send it through the contact form — we usually reply same day.</p>
+        </div>
+
+        <div class="faq">
+          <details open>
+            <summary>Do you work with brands outside Egypt? <span class="ico">+</span></summary>
+            <p>Yes. We currently run engagements across Egypt, the GCC (UAE, KSA, Qatar), Europe, and North America. The team operates async with one weekly synchronous review.</p>
+          </details>
+          <details>
+            <summary>Can you handle both content and paid media? <span class="ico">+</span></summary>
+            <p>That's the default. Strategy, content production, design, video editing, publishing, moderation, and media buying live under one roof — which is the point of an integrated growth partner.</p>
+          </details>
+          <details>
+            <summary>How real is the AI production work? <span class="ico">+</span></summary>
+            <p>Very. We use AI workflows for campaign visuals, video concepts, live-event visuals, thumbnails, and high-velocity creative testing. Every output ships through human creative direction — no slop.</p>
+          </details>
+          <details>
+            <summary>What's the minimum engagement length? <span class="ico">+</span></summary>
+            <p>Three months. Two weeks of strategy and ten weeks of execution is the floor for genuinely meaningful results. We'll politely decline anything shorter.</p>
+          </details>
+          <details>
+            <summary>How do we start? <span class="ico">+</span></summary>
+            <p>Book a discovery call. We review your business, identify the fastest growth opportunities, and recommend a scope. If we're not the right fit, we'll say so and point you somewhere better.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────── CTA ───────── -->
+    <section class="sec" id="contact">
+      <div class="container">
+        <div class="cta-box">
+          <h2>Build the <em>growth system</em><br/>your brand deserves.</h2>
+          <p>30-minute discovery call. No pitch deck, no boilerplate — just a frank look at where the leverage is in your business.</p>
+          <div class="cta-actions">
+            <a class="btn btn-primary btn-lg" href="contact.html">Book a discovery call</a>
+            <a class="btn btn-ghost btn-lg" href="https://wa.me/971523949481" target="_blank" rel="noopener">WhatsApp us</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div data-slot="footer"></div>
+
+  <script>
+    /* Rotating word in hero */
+    (function(){
+      const words = ['identities.', 'authority.', 'movements.', 'communities.', 'institutions.'];
+      const el = document.getElementById('swap');
+      let i = 0;
+      setInterval(() => {
+        i = (i + 1) % words.length;
+        el.animate(
+          [{opacity:0, transform:'translateY(14px)'},{opacity:1, transform:'translateY(0)'}],
+          {duration:480, easing:'cubic-bezier(.2,.8,.2,1)'}
+        );
+        el.textContent = words[i];
+      }, 2200);
+    })();
+
+    /* Process tabs */
+    (function(){
+      const tabs   = document.querySelectorAll('.process-tab');
+      const stages = document.querySelectorAll('.process-stage');
+      tabs.forEach(t => t.addEventListener('click', () => {
+        tabs.forEach(x => x.setAttribute('aria-selected', x === t ? 'true' : 'false'));
+        const id = t.dataset.target;
+        stages.forEach(s => s.classList.toggle('active', s.dataset.id === id));
+      }));
+      /* Auto-advance lightly */
+      let i = 0;
+      setInterval(() => {
+        i = (i + 1) % tabs.length;
+        tabs[i].click();
+      }, 6500);
+    })();
+
+    /* Pricing toggle */
+    (function(){
+      const buttons = document.querySelectorAll('[data-bill]');
+      const factors = { monthly: 1, quarterly: 0.9, annual: 0.82 };
+      const fmt = n => '$' + n.toLocaleString('en-US', { maximumFractionDigits: 0 });
+      buttons.forEach(b => b.addEventListener('click', () => {
+        buttons.forEach(x => x.setAttribute('aria-pressed', x === b ? 'true' : 'false'));
+        const f = factors[b.dataset.bill];
+        document.querySelectorAll('.amt span[data-base]').forEach(span => {
+          const base = parseInt(span.dataset.base, 10);
+          if (!base) return;
+          span.textContent = fmt(Math.round(base * f / 50) * 50);
+        });
+      }));
+    })();
+  </script>
+
+  <!-- Tweaks panel (React + Babel) -->
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <script type="text/babel" src="tweaks-panel.jsx"></script>
+  <script type="text/babel" src="tweaks-app.jsx"></script>
+  <div id="tweaks-root"></div>
+
+  <script src="shared.js"></script>
+</body>
+</html>

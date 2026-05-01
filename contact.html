@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact — Optiiimum</title>
+<meta name="description" content="Book a discovery call with Optiiimum. 30 minutes. No pitch deck." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  .page-hero{padding:80px 0 40px;border-bottom:1px solid var(--line)}
+  .page-hero .crumb{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:20px}
+  .page-hero h1{font-size:clamp(56px,8vw,128px);line-height:.9;letter-spacing:-.05em;font-weight:500;max-width:14ch}
+  .page-hero h1 em{font-family:var(--serif);font-style:italic;font-weight:400;background:var(--grad-brand);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+  .page-hero .lede{color:var(--muted);font-size:18px;line-height:1.6;max-width:54ch;margin-top:28px}
+
+  .form-wrap{
+    display:grid;grid-template-columns:1.4fr 1fr;gap:40px;
+    padding:80px 0;
+  }
+
+  /* Multi-step form */
+  .form{
+    border:1px solid var(--line);border-radius:var(--radius-lg);
+    background:linear-gradient(180deg, var(--card), var(--bg-soft));
+    padding:36px;position:relative;
+  }
+  .stepper{
+    display:flex;gap:6px;margin-bottom:28px;
+  }
+  .stepper .pip{
+    flex:1;height:3px;border-radius:99px;background:rgba(255,255,255,.08);
+    overflow:hidden;position:relative;
+  }
+  .stepper .pip.active::after,.stepper .pip.done::after{
+    content:"";position:absolute;inset:0;background:var(--grad-brand);
+    transform-origin:left;animation:pipfill .6s ease forwards;
+  }
+  .stepper .pip.done::after{animation:none;transform:none}
+  @keyframes pipfill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+  .step{
+    display:none;animation:fadeUp .35s cubic-bezier(.2,.8,.2,1);
+  }
+  .step.active{display:block}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+  .step-num{
+    font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--muted);margin-bottom:10px;
+  }
+  .step h2{
+    font-size:clamp(28px,3.5vw,44px);letter-spacing:-.04em;font-weight:500;line-height:1;
+    margin-bottom:8px;
+  }
+  .step h2 em{font-family:var(--serif);font-style:italic;font-weight:400;background:var(--grad-brand);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+  .step p.help{color:var(--muted);font-size:14px;margin-bottom:24px;line-height:1.5}
+
+  .field{display:flex;flex-direction:column;gap:8px;margin-bottom:18px}
+  .field label{font-size:12px;color:var(--muted);letter-spacing:.04em;font-weight:500}
+  .field input,.field select,.field textarea{
+    background:#0a0a0a;border:1px solid var(--line-2);border-radius:12px;
+    padding:14px 16px;color:var(--text);font:inherit;font-size:15px;
+    outline:none;transition:.15s ease;
+  }
+  .field input:focus,.field select:focus,.field textarea:focus{
+    background:#0d0d12;
+    border-color:transparent;
+    box-shadow:0 0 0 2px var(--g3), 0 0 0 6px color-mix(in oklab, var(--g3) 16%, transparent);
+  }
+  .field textarea{resize:vertical;min-height:120px;line-height:1.5}
+  .field.error input,.field.error select,.field.error textarea{
+    border-color:#ff6b6b;background:#1a0808;
+  }
+  .field .err{color:#ff8a8a;font-size:12px;display:none}
+  .field.error .err{display:block}
+
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:640px){.field-row{grid-template-columns:1fr}}
+
+  .pill-group{
+    display:flex;flex-wrap:wrap;gap:8px;
+  }
+  .pill-group label{
+    cursor:pointer;padding:11px 16px;border-radius:999px;border:1px solid var(--line-2);
+    background:#0a0a0a;color:var(--muted);font-size:13px;font-weight:500;
+    transition:.15s ease;
+  }
+  .pill-group label:hover{color:var(--text)}
+  .pill-group input{position:absolute;opacity:0;pointer-events:none}
+  .pill-group input:checked + span,
+  .pill-group label:has(input:checked){
+    background:var(--grad-brand);color:#0a0a0c;border-color:transparent;font-weight:600;
+  }
+
+  .step-actions{
+    display:flex;justify-content:space-between;align-items:center;
+    margin-top:28px;padding-top:24px;border-top:1px solid var(--line);
+  }
+  .step-actions .meta{font-size:12px;color:var(--muted)}
+
+  /* Sidebar */
+  .form-side{display:flex;flex-direction:column;gap:14px}
+  .side-card{
+    border:1px solid var(--line);border-radius:24px;background:var(--card);padding:26px;
+  }
+  .side-card h4{
+    font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+    background:var(--grad-brand);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    font-family:"JetBrains Mono",monospace;margin-bottom:14px;
+    display:inline-block;
+  }
+  .side-card .quote{
+    font-family:var(--serif);font-style:italic;font-size:22px;line-height:1.35;
+    letter-spacing:-.01em;color:var(--text);font-weight:400;
+  }
+  .side-card .who{
+    margin-top:16px;display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted);
+  }
+  .side-card .who::before{
+    content:"";width:32px;height:32px;border-radius:50%;
+    background:var(--grad-brand);
+  }
+  .side-card ul{list-style:none;display:grid;gap:12px;font-size:14px}
+  .side-card li{display:flex;justify-content:space-between;color:var(--muted);padding:8px 0;border-bottom:1px solid var(--line)}
+  .side-card li:last-child{border-bottom:0}
+  .side-card li strong{color:var(--text);font-weight:500}
+
+  /* Success state */
+  .success{
+    text-align:center;padding:30px 0;
+  }
+  .success .checkmark{
+    width:80px;height:80px;border-radius:50%;background:var(--grad-brand);
+    display:grid;place-items:center;margin:0 auto 24px;color:#0a0a0c;font-size:36px;
+    animation:pop .5s cubic-bezier(.2,.8,.2,1.6);
+    box-shadow:0 20px 60px color-mix(in oklab, var(--g3) 35%, transparent);
+  }
+  @keyframes pop{from{transform:scale(0)}to{transform:scale(1)}}
+  .success h2{font-size:36px;letter-spacing:-.03em;margin-bottom:12px}
+  .success h2 em{font-family:var(--serif);font-style:italic;background:var(--grad-brand);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+  .success p{color:var(--muted);max-width:36ch;margin:0 auto 24px;line-height:1.5}
+
+  @media(max-width:980px){
+    .form-wrap{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+  <div class="noise"></div>
+  <div data-slot="nav"></div>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="crumb">Optiiimum / Contact</div>
+        <h1>Tell us about<br/>the <em>brand</em>.</h1>
+        <p class="lede">A 30-minute discovery call, scheduled within 24 hours of submission. No pitch deck. We come prepared with thoughts on your specific business, not generic frameworks.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="form-wrap">
+          <form class="form" id="contactForm" novalidate>
+            <div class="stepper" aria-hidden="true">
+              <div class="pip active" data-step="1"></div>
+              <div class="pip" data-step="2"></div>
+              <div class="pip" data-step="3"></div>
+            </div>
+
+            <!-- Step 1 -->
+            <div class="step active" data-step="1">
+              <div class="step-num">Step 01 of 03</div>
+              <h2>Who's <em>asking</em>?</h2>
+              <p class="help">Just the basics — we'll learn the rest on the call.</p>
+
+              <div class="field-row">
+                <div class="field"><label for="name">Full name</label>
+                  <input id="name" name="name" type="text" required placeholder="Jane Karim" autocomplete="name" />
+                  <div class="err">Name is required.</div>
+                </div>
+                <div class="field"><label for="role">Role</label>
+                  <input id="role" name="role" type="text" placeholder="Founder, CMO, etc." autocomplete="organization-title" />
+                  <div class="err"></div>
+                </div>
+              </div>
+
+              <div class="field-row">
+                <div class="field"><label for="email">Work email</label>
+                  <input id="email" name="email" type="email" required placeholder="jane@brand.co" autocomplete="email" />
+                  <div class="err">A valid email is required.</div>
+                </div>
+                <div class="field"><label for="company">Company</label>
+                  <input id="company" name="company" type="text" required placeholder="Acme &amp; Co." autocomplete="organization" />
+                  <div class="err">Company is required.</div>
+                </div>
+              </div>
+
+              <div class="step-actions">
+                <span class="meta">All fields handled in confidence</span>
+                <button type="button" class="btn btn-primary" data-next>
+                  Continue <span class="arr">→</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step" data-step="2">
+              <div class="step-num">Step 02 of 03</div>
+              <h2>What do you <em>need</em>?</h2>
+              <p class="help">Pick anything that fits — a single pillar or the full system.</p>
+
+              <div class="field">
+                <label>Services of interest</label>
+                <div class="pill-group" id="services">
+                  <label><input type="checkbox" name="svc" value="strategy" /><span>Strategy</span></label>
+                  <label><input type="checkbox" name="svc" value="content" checked /><span>Content &amp; AI</span></label>
+                  <label><input type="checkbox" name="svc" value="paid" /><span>Paid media</span></label>
+                  <label><input type="checkbox" name="svc" value="systems" /><span>Digital systems</span></label>
+                  <label><input type="checkbox" name="svc" value="brand" /><span>Personal brand</span></label>
+                  <label><input type="checkbox" name="svc" value="ai" /><span>AI production</span></label>
+                </div>
+                <div class="err">Pick at least one.</div>
+              </div>
+
+              <div class="field">
+                <label>Monthly budget range</label>
+                <div class="pill-group" id="budget">
+                  <label><input type="radio" name="bud" value="3-7" /><span>$3–7K</span></label>
+                  <label><input type="radio" name="bud" value="7-15" checked /><span>$7–15K</span></label>
+                  <label><input type="radio" name="bud" value="15-30" /><span>$15–30K</span></label>
+                  <label><input type="radio" name="bud" value="30+" /><span>$30K+</span></label>
+                  <label><input type="radio" name="bud" value="unsure" /><span>Not sure yet</span></label>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="timeline">Timeline</label>
+                <select id="timeline" name="timeline">
+                  <option>Starting in the next 30 days</option>
+                  <option>Starting next quarter</option>
+                  <option>Just exploring for now</option>
+                </select>
+              </div>
+
+              <div class="step-actions">
+                <button type="button" class="btn btn-ghost" data-prev>← Back</button>
+                <button type="button" class="btn btn-primary" data-next>
+                  Continue <span class="arr">→</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step" data-step="3">
+              <div class="step-num">Step 03 of 03</div>
+              <h2>The <em>full</em> picture.</h2>
+              <p class="help">A short paragraph beats a long form. What's the brand, and where does growth currently feel stuck?</p>
+
+              <div class="field">
+                <label for="message">Project notes</label>
+                <textarea id="message" name="message" required placeholder="We make sustainable activewear out of Cairo. Doing roughly $200K/mo on Shopify, mostly Meta ads, content production is a mess and our CAC is creeping up..."></textarea>
+                <div class="err">A short note is required.</div>
+              </div>
+
+              <div class="field">
+                <label for="referral">How did you find us?</label>
+                <select id="referral" name="referral">
+                  <option>Referral from a client</option>
+                  <option>Instagram / TikTok</option>
+                  <option>LinkedIn</option>
+                  <option>Speaking event / podcast</option>
+                  <option>Search</option>
+                  <option>Other</option>
+                </select>
+              </div>
+
+              <div class="step-actions">
+                <button type="button" class="btn btn-ghost" data-prev>← Back</button>
+                <button type="submit" class="btn btn-primary">
+                  Submit &amp; book → 
+                </button>
+              </div>
+            </div>
+
+            <!-- Success -->
+            <div class="step" data-step="4">
+              <div class="success">
+                <div class="checkmark">✓</div>
+                <h2>Got it. <em>Talk soon.</em></h2>
+                <p>We'll review and reply within 24 hours with three discovery-call slots. Reply with the one that works.</p>
+                <a class="btn btn-ghost" href="index.html">Back to home</a>
+              </div>
+            </div>
+          </form>
+
+          <aside class="form-side">
+            <div class="side-card">
+              <h4>What to expect</h4>
+              <ul>
+                <li><span>1. Reply within</span><strong>24 hours</strong></li>
+                <li><span>2. Discovery call</span><strong>30 minutes</strong></li>
+                <li><span>3. Scope &amp; proposal</span><strong>3 days</strong></li>
+                <li><span>4. Kickoff</span><strong>Week 2</strong></li>
+              </ul>
+            </div>
+
+            <div class="side-card">
+              <h4>What clients say</h4>
+              <p class="quote">"They replaced three vendors. Not by saying so — by quietly producing better work, faster, with fewer meetings."</p>
+              <div class="who">CEO · DTC beauty brand · GCC</div>
+            </div>
+
+            <div class="side-card">
+              <h4>Other ways</h4>
+              <ul>
+                <li><span>Email</span><strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="48202d2424270827383c212121253d25662b2725">[email&#160;protected]</a></strong></li>
+                <li><span>WhatsApp · UAE</span><strong>+971 52 394 9481</strong></li>
+                <li><span>WhatsApp · Egypt</span><strong>+20 100 599 9094</strong></li>
+                <li><span>Office hours</span><strong>Sun–Thu · 10–19 GST / EET</strong></li>
+              </ul>
+            </div>
+
+            <div class="side-card">
+              <h4>Where we are</h4>
+              <ul>
+                <li><span>Dubai · UAE</span><strong>Business Bay</strong></li>
+                <li><span>Cairo · Egypt</span><strong>New Cairo · 5th Settlement</strong></li>
+                <li><span>Alexandria · Egypt</span><strong>Smouha</strong></li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div data-slot="footer"></div>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    (function(){
+      const form = document.getElementById('contactForm');
+      const steps = form.querySelectorAll('.step');
+      const pips = form.querySelectorAll('.pip');
+      let cur = 1;
+
+      function show(n){
+        cur = n;
+        steps.forEach(s => s.classList.toggle('active', parseInt(s.dataset.step,10) === n));
+        pips.forEach(p => {
+          const i = parseInt(p.dataset.step,10);
+          p.classList.toggle('active', i === n);
+          p.classList.toggle('done', i < n);
+        });
+      }
+
+      function validateStep(n){
+        let ok = true;
+        if (n === 1) {
+          const fields = ['name','email','company'];
+          fields.forEach(id => {
+            const el = document.getElementById(id);
+            const fld = el.closest('.field');
+            const v = el.value.trim();
+            const valid = id === 'email' ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) : v.length > 1;
+            fld.classList.toggle('error', !valid);
+            if (!valid) ok = false;
+          });
+        }
+        if (n === 2) {
+          const checked = document.querySelectorAll('input[name="svc"]:checked').length;
+          const fld = document.getElementById('services').closest('.field');
+          fld.classList.toggle('error', checked === 0);
+          if (checked === 0) ok = false;
+        }
+        if (n === 3) {
+          const el = document.getElementById('message');
+          const fld = el.closest('.field');
+          const valid = el.value.trim().length >= 10;
+          fld.classList.toggle('error', !valid);
+          if (!valid) ok = false;
+        }
+        return ok;
+      }
+
+      form.querySelectorAll('[data-next]').forEach(b => b.addEventListener('click', () => {
+        if (validateStep(cur)) show(cur + 1);
+      }));
+      form.querySelectorAll('[data-prev]').forEach(b => b.addEventListener('click', () => show(cur - 1)));
+
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        if (validateStep(3)) show(4);
+      });
+
+      // Live-clear errors as user types
+      form.querySelectorAll('input, textarea, select').forEach(el => {
+        el.addEventListener('input', () => {
+          const fld = el.closest('.field');
+          if (fld) fld.classList.remove('error');
+        });
+      });
+    })();
+  </script>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <script type="text/babel" src="tweaks-panel.jsx"></script>
+  <script type="text/babel" src="tweaks-app.jsx"></script>
+  <div id="tweaks-root"></div>
+  <script src="shared.js"></script>
+</body>
+</html>

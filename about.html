@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About — Optiiimum</title>
+<meta name="description" content="The team and the thinking behind Optiiimum. Founded by Jozeph Ezzat. 19 strategists, designers, engineers, marketers." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  /* Page hero — same vocabulary as contact.html */
+  .page-hero{padding:80px 0 40px;border-bottom:1px solid var(--line)}
+  .page-hero .crumb{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:20px}
+  .page-hero h1{font-size:clamp(56px,8vw,128px);line-height:.9;letter-spacing:-.05em;font-weight:500;max-width:14ch}
+  .page-hero h1 em{font-family:var(--serif);font-style:italic;font-weight:400;background:var(--grad-linear);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+  .page-hero .meta-row{
+    display:flex;gap:48px;flex-wrap:wrap;margin-top:36px;
+    padding-top:24px;border-top:1px solid var(--line);
+  }
+  .page-hero .meta-row .item{display:flex;flex-direction:column;gap:4px}
+  .page-hero .meta-row .k{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-2)}
+  .page-hero .meta-row .v{font-size:18px;letter-spacing:-.01em}
+  .page-hero .meta-row .v em{font-family:var(--serif);font-style:italic;color:#fff}
+
+  /* === FOUNDER === */
+  .founder-sec{padding:120px 0 80px;border-bottom:1px solid var(--line)}
+  .founder{
+    display:grid;grid-template-columns:1fr 1.1fr;gap:64px;align-items:center;
+  }
+  .founder-photo{
+    position:relative;border-radius:var(--radius-lg);overflow:hidden;
+    aspect-ratio:4/5;
+    background:#1a1a1f;
+    box-shadow:var(--shadow), 0 0 0 1px var(--line);
+  }
+  .founder-photo img{
+    width:100%;height:100%;object-fit:cover;
+    filter:grayscale(1) contrast(1.05);
+    transition:transform .8s cubic-bezier(.2,.8,.2,1), filter .6s ease;
+  }
+  .founder-photo:hover img{transform:scale(1.03);filter:grayscale(.5) contrast(1.1)}
+  .founder-photo::after{
+    content:"";position:absolute;inset:auto 0 0 0;height:50%;
+    background:linear-gradient(180deg, transparent, rgba(0,0,0,.6));
+    pointer-events:none;
+  }
+  .founder-photo .badge{
+    position:absolute;left:24px;bottom:24px;z-index:2;
+    display:inline-flex;align-items:center;gap:10px;
+    background:rgba(10,10,12,.6);backdrop-filter:blur(14px);
+    border:1px solid rgba(255,255,255,.18);border-radius:999px;
+    padding:8px 14px;font-size:12px;letter-spacing:.04em;
+  }
+  .founder-photo .badge .dot{width:7px;height:7px;border-radius:50%;background:var(--grad-linear)}
+  .founder-photo .corner-tag{
+    position:absolute;top:24px;right:24px;z-index:2;
+    font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.2em;
+    text-transform:uppercase;color:rgba(255,255,255,.7);
+    border:1px solid rgba(255,255,255,.2);padding:6px 10px;border-radius:8px;
+    background:rgba(0,0,0,.3);backdrop-filter:blur(10px);
+  }
+  .founder-text .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;
+    font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:24px;
+  }
+  .founder-text .eyebrow::before{content:"";width:24px;height:1px;background:var(--grad-linear)}
+  .founder-text h2{
+    font-size:clamp(40px,5vw,72px);line-height:.95;letter-spacing:-.04em;font-weight:500;
+    margin-bottom:28px;
+  }
+  .founder-text h2 em{
+    font-family:var(--serif);font-style:italic;font-weight:400;
+    background:var(--grad-linear);-webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+  }
+  .founder-text .quote{
+    font-family:var(--serif);font-style:italic;font-size:clamp(20px,2.2vw,28px);
+    line-height:1.4;color:var(--text);margin-bottom:24px;
+    border-left:2px solid;border-image:var(--grad-linear) 1;padding-left:20px;
+  }
+  .founder-text p.body{color:var(--muted);font-size:16px;line-height:1.7;margin-bottom:14px;max-width:54ch}
+  .founder-text .signoff{
+    display:flex;align-items:center;gap:16px;margin-top:32px;
+    padding-top:24px;border-top:1px solid var(--line);
+  }
+  .founder-text .signoff .name{font-size:17px;font-weight:600;letter-spacing:-.01em}
+  .founder-text .signoff .title{font-size:13px;color:var(--muted);letter-spacing:.02em}
+  .founder-text .signoff .sep{width:1px;height:28px;background:var(--line-2)}
+
+  /* === STORY / VALUES === */
+  .story-sec{padding:96px 0;border-bottom:1px solid var(--line);background:var(--bg-soft)}
+  .story-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px;
+  }
+  .value-card{
+    border:1px solid var(--line);border-radius:var(--radius);
+    padding:32px;background:var(--card);
+    display:flex;flex-direction:column;gap:14px;
+    transition:.3s ease;position:relative;overflow:hidden;
+  }
+  .value-card::before{
+    content:"";position:absolute;inset:0 auto auto 0;width:100%;height:2px;
+    background:var(--grad-linear);transform:scaleX(0);transform-origin:left;
+    transition:transform .4s ease;
+  }
+  .value-card:hover{border-color:var(--line-2);transform:translateY(-3px)}
+  .value-card:hover::before{transform:scaleX(1)}
+  .value-card .num{
+    font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.2em;
+    color:var(--muted);
+  }
+  .value-card h3{
+    font-size:24px;letter-spacing:-.02em;font-weight:500;line-height:1.1;
+  }
+  .value-card h3 em{font-family:var(--serif);font-style:italic;font-weight:400}
+  .value-card p{color:var(--muted);font-size:14px;line-height:1.6}
+
+  /* === TEAM === */
+  .team-sec{padding:120px 0 80px}
+  .team-head{
+    display:grid;grid-template-columns:1.5fr 1fr;gap:40px;align-items:end;margin-bottom:64px;
+  }
+  .team-count{
+    display:flex;align-items:baseline;gap:16px;color:var(--muted);font-size:14px;
+    font-family:"JetBrains Mono",monospace;letter-spacing:.04em;
+  }
+  .team-count .n{
+    font-family:var(--sans);font-size:64px;font-weight:600;letter-spacing:-.04em;
+    line-height:1;color:var(--text);
+    background:var(--grad-linear);-webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+  }
+
+  /* Filter chips */
+  .team-filter{
+    display:flex;gap:8px;margin-bottom:40px;flex-wrap:wrap;
+    padding-bottom:20px;border-bottom:1px solid var(--line);
+  }
+  .team-filter button{
+    font-size:12px;letter-spacing:.04em;color:var(--muted);
+    border:1px solid var(--line);padding:8px 14px;border-radius:999px;
+    transition:.2s ease;
+  }
+  .team-filter button:hover{color:var(--text);border-color:var(--line-2)}
+  .team-filter button.active{
+    background:var(--grad-linear);color:#0a0a0c;border-color:transparent;font-weight:600;
+  }
+
+  .team-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:18px;
+  }
+  .member{
+    position:relative;border-radius:18px;overflow:hidden;
+    aspect-ratio:4/5;background:#15151a;
+    cursor:pointer;
+    transition:transform .25s ease;
+  }
+  .member.hidden{display:none}
+  .member:hover{transform:translateY(-3px)}
+  .member img{
+    width:100%;height:100%;object-fit:cover;
+    filter:grayscale(1) contrast(1.04);
+    transition:filter .5s ease, transform .8s cubic-bezier(.2,.8,.2,1);
+  }
+  .member:hover img{filter:grayscale(.3) contrast(1.08);transform:scale(1.04)}
+
+  .member .meta{
+    position:absolute;inset:auto 0 0 0;padding:18px;
+    background:linear-gradient(180deg, transparent, rgba(0,0,0,.85) 60%);
+    color:#fff;
+    transform:translateY(8px);opacity:.92;transition:.3s ease;
+  }
+  .member:hover .meta{transform:translateY(0);opacity:1}
+  .member .name{
+    font-size:17px;font-weight:600;letter-spacing:-.015em;line-height:1.1;
+    display:flex;align-items:baseline;gap:6px;
+  }
+  .member .name em{
+    font-family:var(--serif);font-style:italic;font-weight:400;font-size:.9em;
+    color:rgba(255,255,255,.6);letter-spacing:0;
+  }
+  .member .role{
+    font-size:12px;color:rgba(255,255,255,.7);letter-spacing:.02em;margin-top:4px;
+  }
+  .member .corner{
+    position:absolute;top:14px;left:14px;
+    font-family:"JetBrains Mono",monospace;font-size:9px;letter-spacing:.18em;
+    text-transform:uppercase;color:rgba(255,255,255,.5);
+    border:1px solid rgba(255,255,255,.2);padding:4px 7px;border-radius:5px;
+    background:rgba(0,0,0,.3);backdrop-filter:blur(8px);
+    opacity:0;transition:opacity .25s ease;
+  }
+  .member:hover .corner{opacity:1}
+  .member .dept-tag{
+    position:absolute;top:14px;right:14px;
+    font-family:"JetBrains Mono",monospace;font-size:9px;letter-spacing:.16em;
+    text-transform:uppercase;color:#0a0a0c;
+    background:var(--grad-linear);
+    padding:4px 8px;border-radius:5px;
+    opacity:0;transform:translateY(-4px);transition:.3s ease;
+  }
+  .member:hover .dept-tag{opacity:1;transform:translateY(0)}
+
+  /* === JOIN === */
+  .join-sec{
+    padding:96px 0;
+    border-top:1px solid var(--line);
+    background:linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%);
+  }
+  .join-card{
+    border-radius:var(--radius-lg);padding:64px 48px;
+    background:
+      radial-gradient(ellipse at 0% 0%, color-mix(in oklab, var(--g1) 30%, transparent), transparent 50%),
+      radial-gradient(ellipse at 100% 100%, color-mix(in oklab, var(--g5) 30%, transparent), transparent 50%),
+      var(--card);
+    border:1px solid var(--line-2);
+    display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:center;
+    position:relative;overflow:hidden;
+  }
+  .join-card h2{
+    font-size:clamp(36px,4.5vw,60px);line-height:.95;letter-spacing:-.04em;font-weight:500;
+    margin-bottom:18px;
+  }
+  .join-card h2 em{
+    font-family:var(--serif);font-style:italic;font-weight:400;
+    background:var(--grad-linear);-webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+  }
+  .join-card p{color:var(--muted);max-width:48ch;line-height:1.6;font-size:16px}
+  .join-card .ctas{display:flex;gap:12px;justify-content:flex-end;flex-wrap:wrap}
+
+  /* Modal */
+  .modal-back{
+    position:fixed;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(8px);
+    z-index:200;display:none;align-items:center;justify-content:center;padding:40px;
+    animation:fade .2s ease;
+  }
+  .modal-back.open{display:flex}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+  .modal{
+    width:min(900px,100%);max-height:90vh;
+    background:var(--card);border:1px solid var(--line-2);
+    border-radius:var(--radius-lg);overflow:hidden;
+    display:grid;grid-template-columns:1fr 1.1fr;
+    animation:rise .3s cubic-bezier(.2,.8,.2,1);
+  }
+  @keyframes rise{from{opacity:0;transform:translateY(20px) scale(.97)}to{opacity:1;transform:none}}
+  .modal .photo{aspect-ratio:4/5;overflow:hidden;background:#15151a;position:relative}
+  .modal .photo img{width:100%;height:100%;object-fit:cover;filter:grayscale(.4) contrast(1.05)}
+  .modal .body{padding:40px 36px;display:flex;flex-direction:column;justify-content:space-between;gap:24px}
+  .modal .dept{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+  .modal h3{font-size:36px;letter-spacing:-.03em;font-weight:500;line-height:1;margin:14px 0 8px}
+  .modal h3 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--muted)}
+  .modal .role{font-size:15px;color:var(--muted);margin-bottom:20px}
+  .modal .bio{font-size:14px;line-height:1.6;color:var(--muted);max-width:38ch}
+  .modal .close{
+    position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:50%;
+    background:rgba(0,0,0,.7);backdrop-filter:blur(8px);
+    border:1px solid rgba(255,255,255,.15);display:grid;place-items:center;color:#fff;z-index:2;
+  }
+  .modal .close:hover{background:rgba(0,0,0,.9)}
+  .modal .stat-row{
+    display:flex;gap:24px;padding-top:20px;border-top:1px solid var(--line);
+  }
+  .modal .stat .k{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-2)}
+  .modal .stat .v{font-size:14px;margin-top:4px}
+
+  @media(max-width:1100px){
+    .founder{grid-template-columns:1fr;gap:40px}
+    .team-grid{grid-template-columns:repeat(3,1fr)}
+    .story-grid{grid-template-columns:1fr 1fr}
+    .modal{grid-template-columns:1fr;max-height:92vh;overflow-y:auto}
+    .modal .photo{aspect-ratio:16/10}
+    .join-card{grid-template-columns:1fr;padding:40px 32px}
+    .join-card .ctas{justify-content:flex-start}
+  }
+  @media(max-width:680px){
+    .team-grid{grid-template-columns:repeat(2,1fr);gap:14px}
+    .story-grid{grid-template-columns:1fr}
+    .team-head{grid-template-columns:1fr;gap:24px}
+    .page-hero .meta-row{gap:24px}
+  }
+</style>
+</head>
+<body>
+  <div class="noise"></div>
+  <div data-slot="nav"></div>
+
+  <main>
+    <!-- HERO -->
+    <section class="page-hero">
+      <div class="container">
+        <div class="crumb">Optiiimum / About</div>
+        <h1>Twenty <em>operators</em>,<br/>one playbook.</h1>
+        <div class="meta-row">
+          <div class="item"><span class="k">Founded</span><span class="v">2018, Cairo</span></div>
+          <div class="item"><span class="k">Team</span><span class="v">19 <em>full-time</em></span></div>
+          <div class="item"><span class="k">Disciplines</span><span class="v">Strategy · Design · Eng · Media</span></div>
+          <div class="item"><span class="k">Brands shipped</span><span class="v">120+</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOUNDER -->
+    <section class="founder-sec">
+      <div class="container">
+        <div class="founder">
+          <div class="founder-photo">
+            <span class="corner-tag">Founder · 01</span>
+            <span class="badge"><span class="dot"></span> Available for new partnerships</span>
+            <img src="assets/team/jozeph.jpg" alt="Jozeph Ezzat, Founder of Optiiimum" />
+          </div>
+
+          <div class="founder-text">
+            <div class="eyebrow">A note from the founder</div>
+            <h2>Built to do the <em>opposite</em> of what agencies do.</h2>
+            <p class="quote">"Most agencies sell hours. We sell outcomes — and the people who deliver them sit in the same room, on the same brief, the entire engagement."</p>
+            <p class="body">Optiiimum started in 2018 with a small studio in Cairo and one stubborn idea: that the gap between strategy and execution is where most brands lose their edge. So we closed it. Strategists, designers, engineers and media buyers work as one pod, one Slack channel, one P&amp;L per client.</p>
+            <p class="body">Seven years in, we've shipped 120+ brand systems across MENA, Europe and the Gulf — and the team has grown from three to nineteen without ever splitting into silos.</p>
+            <div class="signoff">
+              <div>
+                <div class="name">Jozeph Ezzat</div>
+                <div class="title">Founder &amp; Managing Director</div>
+              </div>
+              <div class="sep"></div>
+              <a class="btn btn-sm btn-ghost" href="contact.html">Book time with Jozeph
+                <span class="arr"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6h7M6 3l3 3-3 3" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STORY / VALUES -->
+    <section class="story-sec">
+      <div class="container">
+        <div class="sec-head">
+          <div>
+            <div class="sec-eyebrow">How we work</div>
+            <h2 class="sec-title">Three <em>non-negotiables</em><br/>that shape every brief.</h2>
+          </div>
+          <p class="sec-sub">We say no a lot. To bad-fit clients, to vanity metrics, to retainer creep. Here's what we say yes to — and why our retention rate is north of 80%.</p>
+        </div>
+
+        <div class="story-grid">
+          <article class="value-card">
+            <span class="num">01 / Velocity</span>
+            <h3>Ship in <em>weeks</em>,<br/>not quarters.</h3>
+            <p>A brand sprint runs 4–6 weeks, end to end. We don't believe in the 6-month deck-driven engagement. The first version goes live, then we iterate against real signal.</p>
+          </article>
+          <article class="value-card">
+            <span class="num">02 / Pod model</span>
+            <h3>One team,<br/>one <em>P&amp;L</em>.</h3>
+            <p>Every client gets a fixed pod: strategist, designer, engineer, media lead. Same people from kickoff to launch. No handoffs to a "delivery team," no junior bait-and-switch.</p>
+          </article>
+          <article class="value-card">
+            <span class="num">03 / Outcome-priced</span>
+            <h3>We tie fees to <em>results</em>.</h3>
+            <p>30–50% of our fee is at risk against the metrics we agree on day one. CAC, LTV, conversion lift. If we miss, we eat it. If we beat it, we share the upside.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="team-sec">
+      <div class="container">
+        <div class="team-head">
+          <div>
+            <div class="sec-eyebrow">The whole team</div>
+            <h2 class="sec-title">Every name. Every <em>face</em>.<br/>No outsourced talent.</h2>
+          </div>
+          <div class="team-count">
+            <span class="n">19</span>
+            <span>full-time<br/>operators across<br/>5 disciplines</span>
+          </div>
+        </div>
+
+        <div class="team-filter" id="teamFilter">
+          <button data-f="all" class="active">Everyone <span style="opacity:.5">— 19</span></button>
+          <button data-f="leadership">Leadership</button>
+          <button data-f="strategy">Strategy</button>
+          <button data-f="design">Design</button>
+          <button data-f="engineering">Engineering</button>
+          <button data-f="media">Media &amp; Growth</button>
+          <button data-f="ops">Ops &amp; Account</button>
+        </div>
+
+        <div class="team-grid" id="teamGrid"></div>
+      </div>
+    </section>
+
+    <!-- JOIN -->
+    <section class="join-sec">
+      <div class="container">
+        <div class="join-card">
+          <div>
+            <h2>Want to be name <em>twenty</em>?</h2>
+            <p>We hire one person a quarter, on average. Senior, generalist, allergic to silos. If that's you — we'd love to talk, even when nothing's posted.</p>
+          </div>
+          <div class="ctas">
+            <a class="btn btn-ghost" href="/cdn-cgi/l/email-protection#3457554651514647745b44405d5d5d5941591a575b59"><span class="__cf_email__" data-cfemail="9dfefceff8f8efeeddf2ede9f4f4f4f0e8f0b3fef2f0">[email&#160;protected]</span></a>
+            <a class="btn btn-primary" href="contact.html">Apply
+              <span class="arr"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6h7M6 3l3 3-3 3" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Member modal -->
+  <div class="modal-back" id="modalBack" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal">
+      <div class="photo">
+        <button class="close" aria-label="Close">
+          <svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>
+        </button>
+        <img id="mPhoto" alt="" />
+      </div>
+      <div class="body">
+        <div>
+          <div class="dept" id="mDept">Strategy</div>
+          <h3 id="mName">Name <em>here</em></h3>
+          <div class="role" id="mRole">Role / discipline</div>
+          <p class="bio" id="mBio">Bio placeholder.</p>
+        </div>
+        <div class="stat-row">
+          <div class="stat"><div class="k">Joined</div><div class="v" id="mJoined">2022</div></div>
+          <div class="stat"><div class="k">Based</div><div class="v" id="mBased">Cairo</div></div>
+          <div class="stat"><div class="k">Discipline</div><div class="v" id="mDisc">Strategy</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div data-slot="footer"></div>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    // === Team data ===
+    // Roles + departments are placeholders. Replace name/role/dept per real roster.
+    const TEAM = [
+      { f:'jozeph',        name:'Jozeph Ezzat',    role:'Founder & Managing Director', dept:'leadership',  joined:'2018', based:'Cairo' },
+      { f:'marina-zarif',  name:'Marina Zarif',    role:'Head of Strategy',            dept:'leadership',  joined:'2019', based:'Cairo' },
+      { f:'aziiz',         name:'Aziiz',           role:'Head of Engineering',         dept:'leadership',  joined:'2019', based:'Cairo' },
+      { f:'manar',         name:'Manar',           role:'Head of Operations',          dept:'leadership',  joined:'2020', based:'Cairo' },
+
+      { f:'shiry',         name:'Shiry',           role:'Brand Strategist',            dept:'strategy',    joined:'2021', based:'Cairo' },
+      { f:'youstina',      name:'Youstina',        role:'Senior Strategist',           dept:'strategy',    joined:'2020', based:'Alexandria' },
+      { f:'verina',        name:'Verina',          role:'Strategy Associate',          dept:'strategy',    joined:'2023', based:'Cairo' },
+
+      { f:'marina-george', name:'Marina George',   role:'Design Lead',                 dept:'design',      joined:'2020', based:'Cairo' },
+      { f:'sarah',         name:'Sarah',           role:'Senior Brand Designer',       dept:'design',      joined:'2021', based:'Cairo' },
+      { f:'schahd',        name:'Schahd',          role:'Brand Designer',              dept:'design',      joined:'2022', based:'Cairo' },
+      { f:'selvana',       name:'Selvana',         role:'Visual Designer',             dept:'design',      joined:'2023', based:'Cairo' },
+      { f:'alaa',          name:'Alaa',            role:'Motion Designer',             dept:'design',      joined:'2022', based:'Cairo' },
+
+      { f:'mario',         name:'Mario',           role:'Senior Engineer',             dept:'engineering', joined:'2021', based:'Cairo' },
+      { f:'nairoa',        name:'Nairoa',          role:'Frontend Engineer',           dept:'engineering', joined:'2022', based:'Cairo' },
+      { f:'marina-emad',   name:'Marina Emad',     role:'Full-stack Engineer',         dept:'engineering', joined:'2023', based:'Cairo' },
+
+      { f:'norhan',        name:'Norhan',          role:'Performance Lead',            dept:'media',       joined:'2021', based:'Cairo' },
+      { f:'rahaf',         name:'Rahaf',           role:'Paid Media Specialist',       dept:'media',       joined:'2022', based:'Cairo' },
+      { f:'pakinam',       name:'Pakinam',         role:'Content & Social Lead',       dept:'media',       joined:'2022', based:'Cairo' },
+
+      { f:'hager',         name:'Hager',           role:'Account Director',            dept:'ops',         joined:'2020', based:'Cairo' },
+      { f:'nancy',         name:'Nancy',           role:'Project Manager',             dept:'ops',         joined:'2022', based:'Cairo' }
+    ];
+
+    const DEPT_LABEL = {
+      leadership:'Leadership',
+      strategy:'Strategy',
+      design:'Design',
+      engineering:'Engineering',
+      media:'Media & Growth',
+      ops:'Ops & Account'
+    };
+
+    const grid = document.getElementById('teamGrid');
+    const splitName = (name) => {
+      const parts = name.split(' ');
+      if (parts.length < 2) return { first: name, last: '' };
+      return { first: parts[0], last: parts.slice(1).join(' ') };
+    };
+
+    // Render
+    TEAM.forEach((m, i) => {
+      const { first, last } = splitName(m.name);
+      const el = document.createElement('article');
+      el.className = 'member';
+      el.dataset.dept = m.dept;
+      el.dataset.idx = i;
+      el.innerHTML = `
+        <span class="corner">${String(i+1).padStart(2,'0')} / 19</span>
+        <span class="dept-tag">${DEPT_LABEL[m.dept]}</span>
+        <img src="assets/team/${m.f}.jpg" alt="${m.name}, ${m.role}" loading="lazy" />
+        <div class="meta">
+          <div class="name">${first}${last ? ` <em>${last}</em>` : ''}</div>
+          <div class="role">${m.role}</div>
+        </div>
+      `;
+      el.addEventListener('click', () => openModal(i));
+      grid.appendChild(el);
+    });
+
+    // Update count badges in filter
+    const counts = TEAM.reduce((a,m) => (a[m.dept]=(a[m.dept]||0)+1, a), {});
+    document.querySelectorAll('#teamFilter button').forEach(b => {
+      const f = b.dataset.f;
+      if (f === 'all') return;
+      const n = counts[f] || 0;
+      b.innerHTML = b.innerHTML.trim() + ` <span style="opacity:.5">— ${n}</span>`;
+    });
+
+    // Filtering
+    document.getElementById('teamFilter').addEventListener('click', (e) => {
+      const b = e.target.closest('button'); if (!b) return;
+      document.querySelectorAll('#teamFilter button').forEach(x => x.classList.toggle('active', x === b));
+      const f = b.dataset.f;
+      document.querySelectorAll('.member').forEach(m => {
+        m.classList.toggle('hidden', f !== 'all' && m.dataset.dept !== f);
+      });
+    });
+
+    // Modal
+    const back = document.getElementById('modalBack');
+    function openModal(i){
+      const m = TEAM[i];
+      const { first, last } = splitName(m.name);
+      document.getElementById('mPhoto').src = `assets/team/${m.f}.jpg`;
+      document.getElementById('mPhoto').alt = m.name;
+      document.getElementById('mDept').textContent = DEPT_LABEL[m.dept];
+      document.getElementById('mName').innerHTML = `${first}${last ? ` <em>${last}</em>` : ''}`;
+      document.getElementById('mRole').textContent = m.role;
+      document.getElementById('mBio').textContent = `${first} joined Optiiimum in ${m.joined} and works out of our ${m.based} studio. Bio coming soon.`;
+      document.getElementById('mJoined').textContent = m.joined;
+      document.getElementById('mBased').textContent = m.based;
+      document.getElementById('mDisc').textContent = DEPT_LABEL[m.dept];
+      back.classList.add('open');
+      back.setAttribute('aria-hidden', 'false');
+    }
+    function closeModal(){
+      back.classList.remove('open');
+      back.setAttribute('aria-hidden', 'true');
+    }
+    back.addEventListener('click', (e) => { if (e.target === back) closeModal(); });
+    document.querySelector('.modal .close').addEventListener('click', closeModal);
+    window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+  </script>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <script type="text/babel" src="tweaks-panel.jsx"></script>
+  <script type="text/babel" src="tweaks-app.jsx"></script>
+  <div id="tweaks-root"></div>
+  <script src="shared.js"></script>
+</body>
+</html>
